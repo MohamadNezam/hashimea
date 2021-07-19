@@ -1,0 +1,26 @@
+{
+  "name": "hashimea",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd backend && npm start\"  ",
+    "client": "\"cd frontend && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohamadNezam/hashimea.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MohamadNezam/hashimea/issues"
+  },
+  "homepage": "https://github.com/MohamadNezam/hashimea#readme"
+
+
+  ,"engines": {
+    "node": "v11.3.0"
+  }
+}
