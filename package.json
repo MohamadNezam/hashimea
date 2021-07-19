@@ -17,10 +17,11 @@
   "bugs": {
     "url": "https://github.com/MohamadNezam/hashimea/issues"
   },
-  "homepage": "https://github.com/MohamadNezam/hashimea#readme"
-
-
-  ,"engines": {
+  "homepage": "https://github.com/MohamadNezam/hashimea#readme",
+  "engines": {
     "node": "v11.3.0"
+  },
+  "dependencies": {
+    "concurrently": "^6.2.0"
   }
 }
