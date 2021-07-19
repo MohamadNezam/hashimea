@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-const port = process.env.PORT || 3000;
+const port = process.env.API_PORT || 5000;
 
 
 const app = express();
