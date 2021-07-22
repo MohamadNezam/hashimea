@@ -4,12 +4,12 @@ module.exports = {
     await queryInterface.createTable('User_Rules', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
       },
       user_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull:false,
         references: {
           model: 'users', // <<< Note, its table's name, not object name
@@ -17,7 +17,7 @@ module.exports = {
           },
         },
       rule_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull:false,
         references: {
           model: 'rules', // <<< Note, its table's name, not object name

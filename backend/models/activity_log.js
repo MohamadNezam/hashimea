@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Activity_Log.init({
-    user_id: DataTypes.INTEGER,
+    user_id: DataTypes.UUID,
     activityType: DataTypes.ENUM('add', 'update', 'delete'),
     tableName: DataTypes.STRING,
     oldRecord: DataTypes.TEXT,

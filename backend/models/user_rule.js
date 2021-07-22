@@ -17,12 +17,12 @@ module.exports = (sequelize, DataTypes) => {
   };
   User_Rule.init({
     user_id: {
-      type:DataTypes.INTEGER,
+      type:DataTypes.UUID,
       references: 'users', // <<< Note, its table's name, not object name
       referencesKey: 'id' // <<< Note, its a column name
     },
     rule_id: {
-      type:DataTypes.INTEGER,
+      type:DataTypes.UUID,
       references: 'rules', // <<< Note, its table's name, not object name
       referencesKey: 'id' // <<< Note, its a column name
     }

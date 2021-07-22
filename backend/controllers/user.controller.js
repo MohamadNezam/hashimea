@@ -1,7 +1,7 @@
 const models = require('../models');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+var uuid = require('uuid');
 const Validator = require('fastest-validator');
 
  
@@ -16,11 +16,15 @@ const schema = {
 
 function getObj(req){
     const obj = {
+        id: req.body.id || uuid.v4(),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email:req.body.email,
         password: req.body.password,
-        mobilePhone:req.body.mobilePhone
+        mobilePhone:req.body.mobilePhone,
+        status:req.body.status,
+        verified:req.body.verified,
+        token:req.body.token
     }     
     return obj;
 }

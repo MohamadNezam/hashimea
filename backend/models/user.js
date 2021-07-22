@@ -16,11 +16,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
+    user_type_id: DataTypes.UUID,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    mobilePhone: DataTypes.BIGINT
+    mobilePhone: DataTypes.BIGINT,
+    status:DataTypes.ENUM('Active', 'InActive'),
+    verified:DataTypes.ENUM('Yes', 'No'),
+    token:DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'User',

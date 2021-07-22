@@ -1,6 +1,6 @@
 const models = require('../models');
 const Validator = require('fastest-validator');
-
+var uuid = require('uuid');
  
 const schema = {
     ruleName: {type:"string", optional: false},
@@ -9,6 +9,7 @@ const schema = {
 
 function getObj(req){
     const obj = {
+        id: req.body.id || uuid.v4(),   
         ruleName: req.body.ruleName,
         ruleDescription: req.body.ruleDescription,
     }

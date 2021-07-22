@@ -4,9 +4,16 @@ module.exports = {
     await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+      },
+      user_type_id:{
+        type: Sequelize.UUID,
+        references: {
+          model: 'user_types', // <<< Note, its table's name, not object name
+          key: 'id'
+          },
       },
       firstName: {
         type: Sequelize.STRING
@@ -16,14 +23,22 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING,
-        "unique": true,
-        "allowNull": false
+        unique: true, 
       },
       password: {
         type: Sequelize.STRING
       },
       mobilePhone: {
-        type: Sequelize.BIGINT
+        type: Sequelize.BIGINT,
+        allowNull: false,
+      }, status: {
+        type: Sequelize.ENUM('Active', 'InActive'),
+        allowNull: false
+      }, verified: {
+        type: Sequelize.ENUM('Yes', 'No'),
+        allowNull: false
+      }, token: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

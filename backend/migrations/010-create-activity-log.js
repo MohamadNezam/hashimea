@@ -4,12 +4,12 @@ module.exports = {
     await queryInterface.createTable('Activity_Logs', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
       },
       activityType: {
         type: Sequelize.ENUM('add', 'update', 'delete')

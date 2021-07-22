@@ -13,7 +13,7 @@ app.use(compression());
 const userRoute = require('./routes/user');
 const ruleRoute = require('./routes/rule');
 const user_ruleRoute = require('./routes/user_rule');
-
+const user_typeRoute = require('./routes/user_type');
 
 
 
@@ -58,6 +58,7 @@ app.use(
 app.use("/user", userRoute);
 app.use("/rule", ruleRoute);
 app.use("/user-rule", user_ruleRoute);
+app.use("/user-type", user_typeRoute);
 
 /**
  * @swagger
