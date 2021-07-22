@@ -1,45 +1,47 @@
-import React from 'react';
-import { Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
-import MomentUtils from '@date-io/moment';
-import { Provider as StoreProvider } from 'react-redux';
-import { ThemeProvider } from '@material-ui/styles';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { renderRoutes } from 'react-router-config';
 
-import theme from './theme';
-import { configureStore } from './store';
-import routes from './routes';
-import {
-  ScrollReset,
-  GoogleAnalytics,
-  CookiesNotification
-} from './components';
-import './mixins/chartjs';
-import './mixins/moment';
-import './mixins/validate';
-import './mixins/prismjs';
-import './mock';
-import './assets/scss/index.scss';
-
-const history = createBrowserHistory();
-const store = configureStore();
-
-const App = () => {
+import React,{Component} from 'react';
+import './App.css';
+import {Formik,Field, ErrorMessage} from "formik";
+import * as Yup from "yup";
+class  App extends Component  {
+  onSubmit =(values)=>{
+    console.log(values);
+  }
+  form=(props)=>{
+    return <form onSubmit={props.handleSubmit}>
+      <label>Phone</label>
+      <br/>
+       <Field name="Phone"  type="tel" 
+       pattern="[0-9]{8}" />
+       <ErrorMessage name="Phone"/>
+            <br/>
+       <label>Password</label>
+       <br/>
+       <Field name="Password" type="password"/>
+       <br/>
+       
+       <button type="submit">login </button>       
+    </form>
+  }
+  schema =()=>{
+    const schema=Yup.object().shape({
+      Phone: Yup.string().required()
+    });
+    return schema;
+  }
+  render(){
   return (
-    <StoreProvider store={store}>
-      <ThemeProvider theme={theme}>
-        <MuiPickersUtilsProvider utils={MomentUtils}>
-        <Router history={history}>
-        <ScrollReset />
-        <GoogleAnalytics />
-            <CookiesNotification />
-            {renderRoutes(routes)}
-          </Router>
-        </MuiPickersUtilsProvider>
-      </ThemeProvider>
-    </StoreProvider>
+    <div className="App">
+      <Formik 
+      initialValues={{Phone:"9",Password:""}}
+      onSubmit={this.onSubmit}
+      render={this.form}
+      validationSchema={this.schema()}
+      />
+
+    </div>
   );
-};
+  }
+}
 
 export default App;
